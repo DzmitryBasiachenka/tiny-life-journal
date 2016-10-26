@@ -1,0 +1,7 @@
+rootProject.name='tiny-life-journal'
+
+include 'tlj-domain'
+include 'tlj-repository'
+include 'tlj-service'
+include 'tlj-admin'
+include 'tlj-app'
