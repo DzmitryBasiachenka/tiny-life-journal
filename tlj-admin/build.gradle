@@ -1,0 +1,3 @@
+apply plugin: 'application'
+
+mainClassName = "com.bsdim.tlj.admin.AdminStarter"
