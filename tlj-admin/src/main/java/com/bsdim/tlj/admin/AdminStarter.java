@@ -1,6 +1,5 @@
 package com.bsdim.tlj.admin;
 
-
 import com.bsdim.tlj.admin.menu.MainMenu;
 
 public class AdminStarter{
