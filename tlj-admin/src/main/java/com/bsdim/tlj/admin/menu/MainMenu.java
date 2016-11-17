@@ -1,6 +1,7 @@
 package com.bsdim.tlj.admin.menu;
 
 import com.bsdim.tlj.admin.AbstractMenu;
+import com.bsdim.tlj.admin.service.UserFacade;
 
 public class MainMenu {
     public String selectMenu() {
@@ -9,6 +10,8 @@ public class MainMenu {
             int  number = userMenu.performMenu();
             switch (number) {
                 case 1:
+                    UserFacade objectUserFacade = new UserFacade();
+                    objectUserFacade.addUser();
                     System.out.println("Add user");
                     continue;
                 case 2:
