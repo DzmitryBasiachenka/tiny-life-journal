@@ -6,11 +6,11 @@ import com.bsdim.tlj.admin.service.UserFacade;
 public class MainMenu {
     public String selectMenu() {
         AbstractMenu userMenu = new UserMenu();
+        UserFacade objectUserFacade = new UserFacade();
         while (true) {
             int  number = userMenu.performMenu();
             switch (number) {
                 case 1:
-                    UserFacade objectUserFacade = new UserFacade();
                     objectUserFacade.addUser();
                     System.out.println("Add user");
                     continue;
