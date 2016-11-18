@@ -4,9 +4,10 @@ import com.bsdim.tlj.admin.AbstractMenu;
 import com.bsdim.tlj.admin.service.UserFacade;
 
 public class MainMenu {
+    UserFacade objectUserFacade = new UserFacade();
+
     public String selectMenu() {
         AbstractMenu userMenu = new UserMenu();
-        UserFacade objectUserFacade = new UserFacade();
         while (true) {
             int  number = userMenu.performMenu();
             switch (number) {
