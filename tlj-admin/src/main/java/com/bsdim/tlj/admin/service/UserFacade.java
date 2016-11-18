@@ -23,9 +23,6 @@ public class UserFacade {
         objectUser.setLogin(dataLogin);
         objectUser.setPassword(dataPassword);
 
-        System.out.println("id: " + objectUser.getId());
-        System.out.println("name: " + objectUser.getName());
-        System.out.println("login: " + objectUser.getLogin());
-        System.out.println("password: " + objectUser.getPassword());
+        System.out.println(objectUser.toString());
     }
 }

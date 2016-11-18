@@ -37,4 +37,16 @@ public class User{
     public void setPassword(String password){
         this.password = password;
     }
+
+    public String toString(){
+        StringBuilder builder = new StringBuilder("id: ");
+        builder.append(id);
+        builder.append("name: ");
+        builder.append(name);
+        builder.append("login: ");
+        builder.append(login);
+        builder.append("password: ");
+        builder.append(password);
+        return builder.toString();
+    }
 }
