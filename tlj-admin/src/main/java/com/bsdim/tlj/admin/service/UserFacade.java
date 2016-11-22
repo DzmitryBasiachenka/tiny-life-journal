@@ -1,22 +1,17 @@
 package com.bsdim.tlj.admin.service;
 
+import com.bsdim.tlj.admin.InputUtil;
 import com.bsdim.tlj.domain.user.User;
 
-import java.util.Scanner;
-
 public class UserFacade {
-    private Scanner in = new Scanner(System.in);
 
     public void addUser(){
         User objectUser = new User();
-        System.out.print("Enter your id: ");
-        String dataId = in.nextLine();
-        System.out.print("Enter your name: ");
-        String dataName = in.nextLine();
-        System.out.print("Enter your login: ");
-        String dataLogin = in.nextLine();
-        System.out.print("Enter your password: ");
-        String dataPassword = in.nextLine();
+
+        String dataId = InputUtil.inputData("Enter your id: ");
+        String dataName = InputUtil.inputData("Enter your name: ");
+        String dataLogin = InputUtil.inputData("Enter your login: ");
+        String dataPassword = InputUtil.inputData("Enter your password: ");
 
         objectUser.setId(dataId);
         objectUser.setName(dataName);
