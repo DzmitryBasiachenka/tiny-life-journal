@@ -1,6 +1,6 @@
 package com.bsdim.tlj.admin.service;
 
-import static com.bsdim.tlj.admin.InputUtil.*;
+import static com.bsdim.tlj.admin.util.InputUtil.*;
 import com.bsdim.tlj.domain.user.User;
 
 public class UserFacade {

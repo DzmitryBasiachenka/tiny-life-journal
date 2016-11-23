@@ -1,4 +1,4 @@
-package com.bsdim.tlj.admin;
+package com.bsdim.tlj.admin.util;
 
 import java.util.Scanner;
 
