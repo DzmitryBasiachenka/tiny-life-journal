@@ -1,6 +1,6 @@
 package com.bsdim.tlj.admin.service;
 
-import com.bsdim.tlj.admin.InputUtil;
+import static com.bsdim.tlj.admin.InputUtil.*;
 import com.bsdim.tlj.domain.user.User;
 
 public class UserFacade {
@@ -8,10 +8,10 @@ public class UserFacade {
     public void addUser(){
         User objectUser = new User();
 
-        String dataId = InputUtil.inputData("Enter your id: ");
-        String dataName = InputUtil.inputData("Enter your name: ");
-        String dataLogin = InputUtil.inputData("Enter your login: ");
-        String dataPassword = InputUtil.inputData("Enter your password: ");
+        String dataId = inputData("Enter your id: ");
+        String dataName = inputData("Enter your name: ");
+        String dataLogin = inputData("Enter your login: ");
+        String dataPassword = inputData("Enter your password: ");
 
         objectUser.setId(dataId);
         objectUser.setName(dataName);
