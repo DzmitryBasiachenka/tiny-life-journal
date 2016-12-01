@@ -2,19 +2,16 @@ package com.bsdim.tlj.admin;
 
 import com.bsdim.tlj.domain.user.User;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class FileProcessing {
-    private String nameFile = "person.dat";
+    private String file = "person.dat";
 
     public void writeFile(List<User> collection) {
-        try (ObjectOutputStream write = new ObjectOutputStream(new FileOutputStream(nameFile))) {
+        try (ObjectOutputStream write = new ObjectOutputStream(new FileOutputStream(file))) {
             write.writeObject(collection);
             System.out.println("File save");
         } catch (Exception ex) {
@@ -23,10 +20,12 @@ public class FileProcessing {
     }
 
     public List<User> readFile(){
-        try(ObjectInputStream read = new ObjectInputStream(new FileInputStream(nameFile))) {
-            return (List<User>)read.readObject();
-        } catch(Exception ex){
-            System.out.println(ex.getMessage());
+        if ((new File(file).exists())) {
+            try (ObjectInputStream read = new ObjectInputStream(new FileInputStream(file))) {
+                return (List<User>) read.readObject();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
         }
         return new ArrayList<>();
     }
