@@ -10,11 +10,9 @@ import java.util.ArrayList;
 
 
 public class FileProcessing {
-    private ArrayList<User> collection = new ArrayList();
     private String nameFile = "person.dat";
 
-    public void writeFile(User object) {
-        collection.add(object);
+    public void writeFile(ArrayList<User> collection) {
         try (ObjectOutputStream write = new ObjectOutputStream(new FileOutputStream(nameFile))) {
             write.writeObject(collection);
             System.out.println("File save");
@@ -23,10 +21,8 @@ public class FileProcessing {
         }
     }
 
-    public void readFile(){
-        ArrayList<User> newCollection = null;
-        try(ObjectInputStream read = new ObjectInputStream(new FileInputStream(nameFile)))
-        {
+    public void readFile(ArrayList<User> newCollection){
+        try(ObjectInputStream read = new ObjectInputStream(new FileInputStream(nameFile))) {
             newCollection=(ArrayList<User>)read.readObject();
         } catch(Exception ex){
             System.out.println(ex.getMessage());
