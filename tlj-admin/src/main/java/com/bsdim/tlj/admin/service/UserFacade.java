@@ -5,10 +5,11 @@ import static com.bsdim.tlj.admin.util.InputUtil.*;
 import com.bsdim.tlj.admin.FileProcessing;
 import com.bsdim.tlj.domain.user.User;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserFacade {
     private FileProcessing objectFileProcessing = new FileProcessing();
-    private ArrayList<User> collection = new ArrayList();
+    private List<User> collection = new ArrayList<>();
 
     public void addUser(){
         User objectUser = new User();

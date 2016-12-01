@@ -5,7 +5,7 @@ import com.bsdim.tlj.admin.FileProcessing;
 import com.bsdim.tlj.admin.service.UserFacade;
 import com.bsdim.tlj.domain.user.User;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainMenu {
     private UserFacade objectUserFacade = new UserFacade();
@@ -13,7 +13,6 @@ public class MainMenu {
     public String selectMenu() {
         AbstractMenu userMenu = new UserMenu();
         FileProcessing objectReadFile = new FileProcessing();
-        ArrayList<User> newCollection = null;
 
         while (true) {
             int  number = userMenu.performMenu();
@@ -24,7 +23,10 @@ public class MainMenu {
                     continue;
                 case 2:
                     System.out.println("Show all users");
-                    objectReadFile.readFile(newCollection);
+                    List<User> newCollection = objectReadFile.readFile();
+                    for(User info : newCollection){
+                        System.out.println(info);
+                    }
                     continue;
                 case 3:
                     System.out.println("Delete user");

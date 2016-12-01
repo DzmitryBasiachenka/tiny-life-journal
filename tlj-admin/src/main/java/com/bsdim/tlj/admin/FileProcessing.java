@@ -7,12 +7,13 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class FileProcessing {
     private String nameFile = "person.dat";
 
-    public void writeFile(ArrayList<User> collection) {
+    public void writeFile(List<User> collection) {
         try (ObjectOutputStream write = new ObjectOutputStream(new FileOutputStream(nameFile))) {
             write.writeObject(collection);
             System.out.println("File save");
@@ -21,14 +22,12 @@ public class FileProcessing {
         }
     }
 
-    public void readFile(ArrayList<User> newCollection){
+    public List<User> readFile(){
         try(ObjectInputStream read = new ObjectInputStream(new FileInputStream(nameFile))) {
-            newCollection=(ArrayList<User>)read.readObject();
+            return (List<User>)read.readObject();
         } catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        for(User info : newCollection){
-            System.out.println(info);
-        }
+        return new ArrayList<>();
     }
 }
