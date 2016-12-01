@@ -1,9 +1,12 @@
 package com.bsdim.tlj.admin.service;
 
 import static com.bsdim.tlj.admin.util.InputUtil.*;
+
+import com.bsdim.tlj.admin.FileProcessing;
 import com.bsdim.tlj.domain.user.User;
 
 public class UserFacade {
+    private FileProcessing objectFileProcessing = new FileProcessing();
 
     public void addUser(){
         User objectUser = new User();
@@ -17,6 +20,8 @@ public class UserFacade {
         objectUser.setName(dataName);
         objectUser.setLogin(dataLogin);
         objectUser.setPassword(dataPassword);
+
+        objectFileProcessing.writeFile(objectUser);
 
         System.out.println(objectUser.toString());
     }
