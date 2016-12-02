@@ -8,11 +8,11 @@ import java.util.List;
 
 
 public class FileProcessing {
-    private String file = "person.dat";
+    private String file = "users.dat";
 
-    public void writeFile(List<User> collection) {
+    public void writeFile(List<User> users) {
         try (ObjectOutputStream write = new ObjectOutputStream(new FileOutputStream(file))) {
-            write.writeObject(collection);
+            write.writeObject(users);
             System.out.println("File save");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

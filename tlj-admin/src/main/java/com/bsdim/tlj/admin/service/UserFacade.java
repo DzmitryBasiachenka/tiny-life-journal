@@ -1,7 +1,6 @@
 package com.bsdim.tlj.admin.service;
 
 import static com.bsdim.tlj.admin.util.InputUtil.*;
-
 import com.bsdim.tlj.admin.FileProcessing;
 import com.bsdim.tlj.domain.user.User;
 
@@ -25,8 +24,12 @@ public class UserFacade {
 
         System.out.println(objectUser.toString());
 
-        List<User> collection = objectFileProcessing.readFile();
-        collection.add(objectUser);
-        objectFileProcessing.writeFile(collection);
+        List<User> users = getUsers();
+        users.add(objectUser);
+        objectFileProcessing.writeFile(users);
+    }
+
+    public List<User> getUsers(){
+        return objectFileProcessing.readFile();
     }
 }
