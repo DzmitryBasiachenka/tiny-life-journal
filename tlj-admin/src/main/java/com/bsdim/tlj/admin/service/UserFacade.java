@@ -1,13 +1,14 @@
 package com.bsdim.tlj.admin.service;
 
 import static com.bsdim.tlj.admin.util.InputUtil.*;
-import com.bsdim.tlj.admin.FileProcessing;
+import com.bsdim.tlj.admin.FileRepository;
+import com.bsdim.tlj.admin.UserRepository;
 import com.bsdim.tlj.domain.user.User;
 
 import java.util.List;
 
 public class UserFacade {
-    private FileProcessing objectFileProcessing = new FileProcessing();
+    private FileRepository objectFileRepository = new UserRepository();
 
     public void addUser(){
         User objectUser = new User();
@@ -26,10 +27,10 @@ public class UserFacade {
 
         List<User> users = getUsers();
         users.add(objectUser);
-        objectFileProcessing.writeFile(users);
+        objectFileRepository.writeData(users);
     }
 
     public List<User> getUsers(){
-        return objectFileProcessing.readFile();
+        return objectFileRepository.readData();
     }
 }
