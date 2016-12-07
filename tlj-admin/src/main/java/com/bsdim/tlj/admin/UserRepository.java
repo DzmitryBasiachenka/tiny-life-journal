@@ -1,6 +1,8 @@
 package com.bsdim.tlj.admin;
 
-public class UserRepository extends FileRepository {
+import com.bsdim.tlj.domain.user.User;
+
+public class UserRepository extends FileRepository<User> {
     public UserRepository(){
         super("users.dat");
     }

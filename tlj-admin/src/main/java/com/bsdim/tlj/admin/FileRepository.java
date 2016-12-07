@@ -1,7 +1,5 @@
 package com.bsdim.tlj.admin;
 
-import com.bsdim.tlj.domain.user.User;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
