@@ -8,7 +8,7 @@ import com.bsdim.tlj.domain.user.User;
 import java.util.List;
 
 public class UserFacade {
-    private FileRepository<User> objectFileRepository = new UserRepository();
+    private UserRepository objectFileRepository = new UserRepository();
 
     public void addUser(){
         User objectUser = new User();

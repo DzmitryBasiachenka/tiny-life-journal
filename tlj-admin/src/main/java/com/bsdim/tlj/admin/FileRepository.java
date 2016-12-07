@@ -7,6 +7,7 @@ import java.util.List;
 
 public abstract class FileRepository<T> {
     private String file;
+
     public FileRepository(String newFile){
         this.file = newFile;
     }
