@@ -1,8 +1,7 @@
 package com.bsdim.tlj.admin.service;
 
 import static com.bsdim.tlj.admin.util.InputUtil.*;
-import com.bsdim.tlj.admin.FileRepository;
-import com.bsdim.tlj.admin.UserRepository;
+import com.bsdim.tlj.repository.users.UserRepository;
 import com.bsdim.tlj.domain.user.User;
 
 import java.util.List;
@@ -32,5 +31,9 @@ public class UserFacade {
 
     public List<User> getUsers(){
         return objectFileRepository.readData();
+    }
+
+    public void deleteUser(){
+        objectFileRepository.delete(inputData("Enter your id: "));
     }
 }
