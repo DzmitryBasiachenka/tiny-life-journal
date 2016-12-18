@@ -21,4 +21,14 @@ public class UserRepository extends FileRepository<User> {
         }
         writeData(data);
     }
+
+    public User search(String dataName){
+        List<User> data = readData();
+        for (User user: data){
+            if (user.getName().equals(dataName)){
+                return user;
+            }
+        }
+        return null;
+    }
 }

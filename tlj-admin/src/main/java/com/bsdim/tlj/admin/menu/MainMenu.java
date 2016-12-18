@@ -3,9 +3,6 @@ package com.bsdim.tlj.admin.menu;
 import com.bsdim.tlj.admin.AbstractMenu;
 import com.bsdim.tlj.admin.service.UserFacade;
 import com.bsdim.tlj.domain.user.User;
-import com.bsdim.tlj.repository.users.UserRepository;
-
-import static com.bsdim.tlj.admin.util.InputUtil.*;
 
 import java.util.List;
 
@@ -15,7 +12,6 @@ public class MainMenu {
 
     public String selectMenu() {
         AbstractMenu userMenu = new UserMenu();
-        UserRepository userRepository = new UserRepository();
 
         while (true) {
             int  number = userMenu.performMenu();
@@ -36,6 +32,14 @@ public class MainMenu {
                     objectUserFacade.deleteUser();
                     continue;
                 case 4:
+                    User user = objectUserFacade.searchUser();
+                    if (user == null){
+                        System.out.println("User not found");
+                    }else {
+                        System.out.println(user);
+                    }
+                    continue;
+                case 5:
                     System.out.println("Bye-bye");
                     System.exit(0);
                 default:

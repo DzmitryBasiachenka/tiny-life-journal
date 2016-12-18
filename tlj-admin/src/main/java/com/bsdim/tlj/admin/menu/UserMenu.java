@@ -10,6 +10,7 @@ public class UserMenu extends AbstractMenu {
         System.out.println("1)Add user");
         System.out.println("2)Display all users");
         System.out.println("3)Delete user");
-        System.out.println("4)Exit");
+        System.out.println("4)Search user");
+        System.out.println("5)Exit");
     }
 }
