@@ -9,7 +9,7 @@ import java.util.List;
 public class UserFacade {
     private UserRepository objectFileRepository = new UserRepository();
 
-    public void addUser(){
+    public void addUser() {
         User objectUser = new User();
 
         String dataId = inputData("Enter your id: ");
@@ -29,15 +29,15 @@ public class UserFacade {
         objectFileRepository.writeData(users);
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return objectFileRepository.readData();
     }
 
-    public void deleteUser(){
+    public void deleteUser() {
         objectFileRepository.delete(inputData("Enter your id: "));
     }
 
-    public User searchUser(){
+    public User searchUser() {
         return objectFileRepository.search(inputData("Enter your name: "));
     }
 }

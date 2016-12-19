@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class FileRepository<T> {
     private String file;
 
-    public FileRepository(String newFile){
+    public FileRepository(String newFile) {
         this.file = newFile;
     }
 
@@ -21,7 +21,7 @@ public abstract class FileRepository<T> {
         }
     }
 
-    public List<T> readData(){
+    public List<T> readData() {
         if ((new File(file).exists())) {
             try (ObjectInputStream read = new ObjectInputStream(new FileInputStream(file))) {
                 return (List<T>) read.readObject();

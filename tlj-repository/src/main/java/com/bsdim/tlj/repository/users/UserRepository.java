@@ -6,15 +6,15 @@ import com.bsdim.tlj.repository.FileRepository;
 import java.util.List;
 
 public class UserRepository extends FileRepository<User> {
-    public UserRepository(){
+    public UserRepository() {
         super("users.dat");
     }
 
-    public void delete(String dataId){
+    public void delete(String dataId) {
         List<User> data = readData();
-        for (int i = 0; i < data.size(); i++){
+        for (int i = 0; i < data.size(); i++) {
             User userId = data.get(i);
-            if (dataId.equals(userId.getId())){
+            if (dataId.equals(userId.getId())) {
                 data.remove(i);
                 break;
             }
@@ -22,10 +22,10 @@ public class UserRepository extends FileRepository<User> {
         writeData(data);
     }
 
-    public User search(String dataName){
+    public User search(String dataName) {
         List<User> data = readData();
-        for (User user: data){
-            if (user.getName().equals(dataName)){
+        for (User user: data) {
+            if (user.getName().equals(dataName)) {
                 return user;
             }
         }

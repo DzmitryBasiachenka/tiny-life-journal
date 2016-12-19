@@ -2,7 +2,7 @@ package com.bsdim.tlj.domain.user;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class User implements Serializable {
     private String id;
     private String name;
     private String login;
@@ -16,31 +16,31 @@ public class User implements Serializable{
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getLogin(){
+    public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login){
+    public void setLogin(String login) {
         this.login = login;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder builder = new StringBuilder("id: ");
         builder.append(id);
         builder.append("name: ");

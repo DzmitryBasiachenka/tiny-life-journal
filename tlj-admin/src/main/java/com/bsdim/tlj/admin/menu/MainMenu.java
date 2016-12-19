@@ -23,7 +23,7 @@ public class MainMenu {
                 case 2:
                     System.out.println("Show all users");
                     List<User> users = objectUserFacade.getUsers();
-                    for(User info : users){
+                    for(User info : users) {
                         System.out.println(info);
                     }
                     continue;
@@ -33,9 +33,9 @@ public class MainMenu {
                     continue;
                 case 4:
                     User user = objectUserFacade.searchUser();
-                    if (user == null){
+                    if (user == null) {
                         System.out.println("User not found");
-                    }else {
+                    } else {
                         System.out.println(user);
                     }
                     continue;
