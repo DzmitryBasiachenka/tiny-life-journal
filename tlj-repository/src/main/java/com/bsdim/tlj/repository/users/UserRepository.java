@@ -22,20 +22,20 @@ public class UserRepository extends FileRepository<User> {
         writeData(data);
     }
 
-    public User findByName(String dataName) {
+    public User findByLogin(String login) {
         List<User> data = readData();
         for (User user: data) {
-            if (user.getName().equals(dataName)) {
+            if (user.getLogin().equals(login)) {
                 return user;
             }
         }
         return null;
     }
 
-    public User findById(String dataId) {
+    public User findById(String id) {
         List<User> data = readData();
         for (User user: data) {
-            if (user.getId().equals(dataId)) {
+            if (user.getId().equals(id)) {
                 return user;
             }
         }

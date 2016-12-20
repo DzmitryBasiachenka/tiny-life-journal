@@ -1,16 +1,15 @@
 package com.bsdim.tlj.admin.menu;
 
 import com.bsdim.tlj.admin.AbstractMenu;
-import com.bsdim.tlj.admin.service.UserFacade;
+import com.bsdim.tlj.service.user.UserService;
 import com.bsdim.tlj.domain.user.User;
 
 import java.util.List;
 
 import static com.bsdim.tlj.admin.util.InputUtil.*;
 
-
 public class MainMenu {
-    private UserFacade facade = new UserFacade();
+    private UserService service = new UserService();
 
     public String selectMenu() {
         AbstractMenu userMenu = new UserMenu();
@@ -20,22 +19,22 @@ public class MainMenu {
             switch (number) {
                 case 1:
                     System.out.println("Add user");
-                    facade.addUser(createDataUser());
+                    service.addUser(createDataUser());
                     continue;
                 case 2:
                     System.out.println("Show all users");
-                    List<User> users = facade.getUsers();
+                    List<User> users = service.getUsers();
                     for(User info : users) {
                         System.out.println(info);
                     }
                     continue;
                 case 3:
                     System.out.println("Delete user");
-                    facade.deleteUser(inputData("Enter your id: "));
+                    service.deleteUser(inputData("Enter your id: "));
                     continue;
                 case 4:
-                    System.out.println("Search user by name");
-                    User user = facade.findByName(inputData("Enter your name: "));
+                    System.out.println("Search user by login");
+                    User user = service.findByLogin(inputData("Enter your login: "));
                     if (user == null) {
                         System.out.println("User not found");
                     } else {
@@ -44,7 +43,7 @@ public class MainMenu {
                     continue;
                 case 5:
                     System.out.println("Search user by id");
-                    user = facade.findById(inputData("Enter your id: "));
+                    user = service.findById(inputData("Enter your id: "));
                     if (user == null) {
                         System.out.println("User not found");
                     } else {

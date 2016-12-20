@@ -3,5 +3,5 @@ apply plugin: 'application'
 mainClassName = "com.bsdim.tlj.admin.AdminStarter"
 
 dependencies {
-   compile project(":tlj-repository")
+   compile project(":tlj-service")
 }

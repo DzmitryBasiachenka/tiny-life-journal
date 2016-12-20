@@ -1,11 +1,11 @@
-package com.bsdim.tlj.admin.service;
+package com.bsdim.tlj.service.user;
 
 import com.bsdim.tlj.domain.user.User;
 import com.bsdim.tlj.repository.users.UserRepository;
 
 import java.util.List;
 
-public class UserFacade {
+public class UserService {
     private UserRepository repository = new UserRepository();
 
     public void addUser(User user) {
@@ -22,8 +22,8 @@ public class UserFacade {
         repository.delete(id);
     }
 
-    public User findByName(String name) {
-        return repository.findByName(name);
+    public User findByLogin(String login) {
+        return repository.findByLogin(login);
     }
 
     public User findById(String id) {
