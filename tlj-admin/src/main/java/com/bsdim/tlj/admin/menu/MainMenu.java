@@ -32,14 +32,24 @@ public class MainMenu {
                     objectUserFacade.deleteUser();
                     continue;
                 case 4:
-                    User user = objectUserFacade.searchUser();
-                    if (user == null) {
+                    System.out.println("Search user by name");
+                    User userByName = objectUserFacade.findByName();
+                    if (userByName == null) {
                         System.out.println("User not found");
                     } else {
-                        System.out.println(user);
+                        System.out.println(userByName);
                     }
                     continue;
                 case 5:
+                    System.out.println("Search user by id");
+                    User userById = objectUserFacade.findById();
+                    if (userById == null) {
+                        System.out.println("User not found");
+                    } else {
+                        System.out.println(userById);
+                    }
+                    continue;
+                case 6:
                     System.out.println("Bye-bye");
                     System.exit(0);
                 default:

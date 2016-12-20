@@ -37,7 +37,11 @@ public class UserFacade {
         objectFileRepository.delete(inputData("Enter your id: "));
     }
 
-    public User searchUser() {
-        return objectFileRepository.search(inputData("Enter your name: "));
+    public User findByName() {
+        return objectFileRepository.findByName(inputData("Enter your name: "));
+    }
+
+    public User findById() {
+        return objectFileRepository.findById(inputData("Enter your id: "));
     }
 }
