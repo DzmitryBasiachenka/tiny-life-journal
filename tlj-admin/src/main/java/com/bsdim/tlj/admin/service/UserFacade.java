@@ -1,47 +1,32 @@
 package com.bsdim.tlj.admin.service;
 
-import static com.bsdim.tlj.admin.util.InputUtil.*;
-import com.bsdim.tlj.repository.users.UserRepository;
 import com.bsdim.tlj.domain.user.User;
+import com.bsdim.tlj.repository.users.UserRepository;
 
 import java.util.List;
 
 public class UserFacade {
-    private UserRepository objectFileRepository = new UserRepository();
+    private UserRepository repository = new UserRepository();
 
-    public void addUser() {
-        User objectUser = new User();
-
-        String dataId = inputData("Enter your id: ");
-        String dataName = inputData("Enter your name: ");
-        String dataLogin = inputData("Enter your login: ");
-        String dataPassword = inputData("Enter your password: ");
-
-        objectUser.setId(dataId);
-        objectUser.setName(dataName);
-        objectUser.setLogin(dataLogin);
-        objectUser.setPassword(dataPassword);
-
-        System.out.println(objectUser.toString());
-
+    public void addUser(User user) {
         List<User> users = getUsers();
-        users.add(objectUser);
-        objectFileRepository.writeData(users);
+        users.add(user);
+        repository.writeData(users);
     }
 
     public List<User> getUsers() {
-        return objectFileRepository.readData();
+        return repository.readData();
     }
 
-    public void deleteUser() {
-        objectFileRepository.delete(inputData("Enter your id: "));
+    public void deleteUser(String id) {
+        repository.delete(id);
     }
 
-    public User findByName() {
-        return objectFileRepository.findByName(inputData("Enter your name: "));
+    public User findByName(String name) {
+        return repository.findByName(name);
     }
 
-    public User findById() {
-        return objectFileRepository.findById(inputData("Enter your id: "));
+    public User findById(String id) {
+        return repository.findById(id);
     }
 }
