@@ -8,10 +8,8 @@ import java.util.List;
 public class UserService {
     private UserRepository repository = new UserRepository();
 
-    public void addUser(User user) {
-        List<User> users = getUsers();
-        users.add(user);
-        repository.writeData(users);
+    public void addUser(User user){
+        repository.create(user);
     }
 
     public List<User> getUsers() {
@@ -27,6 +25,7 @@ public class UserService {
     }
 
     public User findById(String id) {
-        return repository.findById(id);
+        return repository.read(id);
     }
+
 }
