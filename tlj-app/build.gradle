@@ -1,0 +1,7 @@
+apply plugin: 'application'
+
+mainClassName = "com.bsdim.tlj.app.AppStarter"
+
+dependencies {
+   compile project(":tlj-service")
+}
