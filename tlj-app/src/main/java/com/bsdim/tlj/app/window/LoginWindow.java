@@ -68,6 +68,7 @@ public class LoginWindow extends JFrame {
                     JOptionPane.showMessageDialog(null, String.format("Sorry, user %1$s not found.", loginField.getText()));
                 } else {
                     JOptionPane.showMessageDialog(null, String.format("Welcome %1$s!", userData.getName()));
+                    new WorkspaceWindow(userData);
                 }
             }
         });
