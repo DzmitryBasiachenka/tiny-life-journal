@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 public class LoginWindow extends JFrame {
     private JTextField loginField;
     private JPasswordField passwordField;
-    private UserFacade user = new UserFacade();
+    private UserFacade userFacade = new UserFacade();
 
     public LoginWindow(){
         super("Authorization manager");
@@ -63,12 +63,12 @@ public class LoginWindow extends JFrame {
         ok.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                User userData = user.getUser(loginField.getText(), new String(passwordField.getPassword()));
+                User userData = userFacade.getUser(loginField.getText(), new String(passwordField.getPassword()));
                 if (userData == null) {
                     JOptionPane.showMessageDialog(null, String.format("Sorry, user %1$s not found.", loginField.getText()));
                 } else {
                     JOptionPane.showMessageDialog(null, String.format("Welcome %1$s!", userData.getName()));
-                    new WorkspaceWindow(userData);
+                    new WorkspaceWindow(userData, userFacade);
                 }
             }
         });
