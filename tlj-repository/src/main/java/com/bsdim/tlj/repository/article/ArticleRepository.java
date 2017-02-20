@@ -4,6 +4,7 @@ import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.repository.FileRepository;
 import com.bsdim.tlj.repository.ICrud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleRepository extends FileRepository<Article> implements ICrud<String, Article> {
@@ -53,5 +54,16 @@ public class ArticleRepository extends FileRepository<Article> implements ICrud<
             }
         }
         writeData(articles);
+    }
+
+    public List<Article> findByUserId(String userId) {
+        List<Article> articles = readData();
+        List<Article> articlesUser = new ArrayList<>();
+        for (Article article: articles) {
+            if (article.getUserId().equals(userId)) {
+                articlesUser.add(article);
+            }
+        }
+        return articlesUser;
     }
 }
