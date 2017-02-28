@@ -3,7 +3,9 @@ package com.bsdim.tlj.domain.article;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class Article {
+import java.io.Serializable;
+
+public class Article implements Serializable{
     private String id;
     private String title;
     private String text;
