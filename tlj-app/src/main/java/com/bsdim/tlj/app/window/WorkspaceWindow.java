@@ -16,9 +16,11 @@ public class WorkspaceWindow extends JFrame {
     public WorkspaceWindow(User userData, UserFacade userFacade) {
         super("Workspace window");
         this.userFacade = userFacade;
-        setSize(800, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         initTabsComponent(userData);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(800, 600);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

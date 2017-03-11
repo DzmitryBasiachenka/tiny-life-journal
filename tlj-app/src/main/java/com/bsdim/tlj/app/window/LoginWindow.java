@@ -14,8 +14,9 @@ public class LoginWindow extends JFrame {
 
     public LoginWindow(){
         super("Authorization manager");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -69,6 +70,7 @@ public class LoginWindow extends JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, String.format("Welcome %1$s!", userData.getName()));
                     new WorkspaceWindow(userData, userFacade);
+                    dispose();
                 }
             }
         });

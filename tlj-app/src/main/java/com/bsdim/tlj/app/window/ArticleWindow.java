@@ -18,7 +18,7 @@ public class ArticleWindow extends JFrame {
     private final static String TITLE = "Title";
     private final static String TEXT = "Text";
     private Article article = new Article();
-    private JTextField title;
+    private JTextArea title;
     private JTextArea text;
     private UserFacade userFacade;
     private User user;
@@ -27,9 +27,10 @@ public class ArticleWindow extends JFrame {
         super("New article");
         this.user = user;
         this.userFacade = userFacade;
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().add(initComponents());
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(800, 600);
+        setLocationRelativeTo(null);
+        getContentPane().add(initComponents());
         setVisible(true);
     }
 
@@ -44,17 +45,17 @@ public class ArticleWindow extends JFrame {
     }
 
     public JPanel initTitleComponent() {
+        title = initTextArea(2, 80);
         JPanel titlePanel = new JPanel(new BorderLayout());
-        title = new JTextField();
-        title.setDocument(new LengthRestrictedDocument(70));
+        title.setDocument(new LengthRestrictedDocument(128));
         titlePanel.setBorder(new TitledBorder(TITLE));
         titlePanel.add(ArticlePanel.wrapForScroll(title), BorderLayout.NORTH);
         return titlePanel;
     }
 
     public JPanel initTextComponent() {
-        JPanel textPanel = new JPanel(new BorderLayout());
         text = initTextArea();
+        JPanel textPanel = new JPanel(new BorderLayout());
         textPanel.setBorder(new TitledBorder(TEXT));
         textPanel.add(ArticlePanel.wrapForScroll(text), BorderLayout.CENTER);
         return textPanel;
@@ -85,6 +86,13 @@ public class ArticleWindow extends JFrame {
         buttonsPanel.add(save);
         buttonsPanel.add(cancel);
         return buttonsPanel;
+    }
+
+    public JTextArea initTextArea(int rows, int columns) {
+        JTextArea area = new JTextArea(rows, columns);
+        area.setLineWrap(true);
+        area.setEditable(true);
+        return area;
     }
 
     public JTextArea initTextArea() {

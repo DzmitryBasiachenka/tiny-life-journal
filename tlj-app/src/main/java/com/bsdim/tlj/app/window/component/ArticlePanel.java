@@ -15,11 +15,11 @@ import java.util.List;
 
 public class ArticlePanel extends JPanel {
     private static final String LIST_TITLE = "List articles";
-    private static final String TEXT_TITLE = "Text article";
+    private static final String TEXT_TITLE = "Article";
     private static final String NEW_ARTICLE_CAPTION = "New article";
     private static final String EMPTY_STRING = "";
     private JList<Article> listTitles = new JList<>();
-    private JTextField title = new JTextField();;
+    private JLabel title = new JLabel();
     private JTextArea text = new JTextArea();
     private JButton newArticle;
     private UserFacade userFacade;
@@ -61,8 +61,9 @@ public class ArticlePanel extends JPanel {
                 JList<Article> list = (JList<Article>)e.getSource();
                 Article article = list.getSelectedValue();
                 if(article != null){
-                    title.setText(article.getTitle());
+                    title.setText("<html><p style=\\\"width:390px\\\">"+article.getTitle()+"</p></html>");
                     text.setText(article.getText());
+                    text.setCaretPosition(0);
                 }
             }
         });
@@ -75,6 +76,7 @@ public class ArticlePanel extends JPanel {
 
     public JComponent initTextComponent() {
         text.setLineWrap(true);
+        text.setEditable(false);
 
         JPanel textPanel = new JPanel(new BorderLayout(4,4));
         textPanel.setBorder(new TitledBorder(TEXT_TITLE));
@@ -105,8 +107,7 @@ public class ArticlePanel extends JPanel {
        private ArticleCellRenderer() {
            setOpaque(true);
        }
-        public Component getListCellRendererComponent(JList list, Object value,
-                                                      int index, boolean isSelected, boolean cellHasFocus) {
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Article article = (Article) value;
             setText(article.getTitle());
             if(isSelected) {
