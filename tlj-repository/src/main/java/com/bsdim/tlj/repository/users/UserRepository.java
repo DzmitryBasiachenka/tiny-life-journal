@@ -64,5 +64,4 @@ public class UserRepository extends FileRepository<User> implements ICrud<String
         }
         return null;
     }
-
 }

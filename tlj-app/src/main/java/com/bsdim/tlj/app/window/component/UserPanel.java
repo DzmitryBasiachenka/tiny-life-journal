@@ -9,6 +9,7 @@ public class UserPanel extends JPanel {
     private static final String LOGIN_TITLE = "Login";
     private static final String NAME_TITLE = "Name";
     private static final String MAIL_TITLE = "Mail";
+
     private JLabel statusLabel;
     private JTextField text;
 

@@ -58,7 +58,6 @@ public class Article implements Serializable{
                 .append(text, article.text)
                 .append(userId, article.userId)
                 .isEquals();
-
     }
 
     @Override

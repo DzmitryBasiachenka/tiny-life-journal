@@ -1,6 +1,6 @@
 package com.bsdim.tlj.app.window;
 
-import com.bsdim.tlj.app.window.user.UserFacade;
+import com.bsdim.tlj.app.user.UserFacade;
 import com.bsdim.tlj.domain.user.User;
 
 import javax.swing.*;

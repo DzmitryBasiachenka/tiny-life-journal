@@ -3,13 +3,12 @@ package com.bsdim.tlj.domain.article;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class ArticleTest {
     private String id = "id";
     private String title = "title";
     private String text = "text";
     private String userId = "userId";
+
     @Test
     public void testEquals() throws Exception {
         Article article = testSetters();

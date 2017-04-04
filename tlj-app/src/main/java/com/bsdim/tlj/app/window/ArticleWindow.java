@@ -1,15 +1,13 @@
 package com.bsdim.tlj.app.window;
 
+import com.bsdim.tlj.app.LengthRestrictedDocument;
+import com.bsdim.tlj.app.user.UserFacade;
 import com.bsdim.tlj.app.window.component.ArticlePanel;
-import com.bsdim.tlj.app.window.user.UserFacade;
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.domain.user.User;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.UUID;
@@ -17,6 +15,7 @@ import java.util.UUID;
 public class ArticleWindow extends JFrame {
     private final static String TITLE = "Title";
     private final static String TEXT = "Text";
+
     private Article article = new Article();
     private JTextArea title;
     private JTextArea text;
@@ -108,24 +107,5 @@ public class ArticleWindow extends JFrame {
         article.setUserId(user.getId());
         article.setId(UUID.randomUUID().toString());
         userFacade.addArticle(article);
-    }
-
-    private final class LengthRestrictedDocument extends PlainDocument {
-        private final int limit;
-
-        private LengthRestrictedDocument(int limit) {
-            this.limit = limit;
-        }
-
-        @Override
-        public void insertString(int offs, String str, AttributeSet a)
-                throws BadLocationException {
-            if (str == null){
-                return;
-            }
-            if ((getLength() + str.length()) <= limit) {
-                super.insertString(offs, str, a);
-            }
-        }
     }
 }

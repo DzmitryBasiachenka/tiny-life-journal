@@ -43,11 +43,11 @@ public class User implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder("id: ");
         builder.append(id);
-        builder.append("name: ");
+        builder.append(" name: ");
         builder.append(name);
-        builder.append("login: ");
+        builder.append(" login: ");
         builder.append(login);
-        builder.append("password: ");
+        builder.append(" password: ");
         builder.append(password);
         return builder.toString();
     }

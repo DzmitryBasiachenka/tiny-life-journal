@@ -1,4 +1,4 @@
-package com.bsdim.tlj.app.window.user;
+package com.bsdim.tlj.app.user;
 
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.domain.user.User;

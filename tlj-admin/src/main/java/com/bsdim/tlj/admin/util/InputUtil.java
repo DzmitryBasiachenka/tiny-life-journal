@@ -26,4 +26,12 @@ public class InputUtil {
 
         return user;
     }
+
+    public static User updateDataUser(User user) {
+        user.setName(inputData("Enter your name: "));
+        user.setLogin(inputData("Enter your login: "));
+        user.setPassword(inputData("Enter your password: "));
+
+        return user;
+    }
 }

@@ -1,7 +1,7 @@
 package com.bsdim.tlj.app.window.component;
 
 import com.bsdim.tlj.app.window.ArticleWindow;
-import com.bsdim.tlj.app.window.user.UserFacade;
+import com.bsdim.tlj.app.user.UserFacade;
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.domain.user.User;
 
@@ -18,6 +18,7 @@ public class ArticlePanel extends JPanel {
     private static final String TEXT_TITLE = "Article";
     private static final String NEW_ARTICLE_CAPTION = "New article";
     private static final String EMPTY_STRING = "";
+
     private JList<Article> listTitles = new JList<>();
     private JLabel title = new JLabel();
     private JTextArea text = new JTextArea();

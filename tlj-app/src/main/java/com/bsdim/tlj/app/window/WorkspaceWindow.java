@@ -2,7 +2,7 @@ package com.bsdim.tlj.app.window;
 
 import com.bsdim.tlj.app.window.component.ArticlePanel;
 import com.bsdim.tlj.app.window.component.UserPanel;
-import com.bsdim.tlj.app.window.user.UserFacade;
+import com.bsdim.tlj.app.user.UserFacade;
 import com.bsdim.tlj.domain.user.User;
 
 import javax.swing.*;
@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 public class WorkspaceWindow extends JFrame {
     private static final String USER_PANEL_CAPTION = "User";
     private static final String ARTICLE_PANEL_CAPTION = "Article";
+
     private UserFacade userFacade;
 
     public WorkspaceWindow(User userData, UserFacade userFacade) {
