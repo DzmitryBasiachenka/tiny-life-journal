@@ -1,7 +1,7 @@
 package com.bsdim.tlj.repository.article;
 
 import com.bsdim.tlj.domain.article.Article;
-import com.bsdim.tlj.repository.FileRepository;
+import com.bsdim.tlj.repository.file.FileRepository;
 import com.bsdim.tlj.repository.ICrud;
 
 import java.util.ArrayList;

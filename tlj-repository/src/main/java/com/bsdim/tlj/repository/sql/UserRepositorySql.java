@@ -1,14 +1,14 @@
 package com.bsdim.tlj.repository.sql;
 
 import com.bsdim.tlj.domain.user.User;
-import com.bsdim.tlj.repository.ICrud;
+import com.bsdim.tlj.repository.IUserRepository;
 import com.bsdim.tlj.repository.exception.RepositoryException;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepositorySql implements ICrud<String, User> {
+public class UserRepositorySql implements IUserRepository {
     private static final String CREATE_USER = "insert into \"user\"(name, login, password, id) values(?, ?, ?, ?)";
     private static final String READ_USER = "select id, name, login, password from \"user\" where id = ?";
     private static final String UPDATE_USER = "update \"user\" set  name = ?, login = ?, password = ? where id = ?";
@@ -55,6 +55,7 @@ public class UserRepositorySql implements ICrud<String, User> {
         }
     }
 
+    @Override
     public List<User> getUsers() {
         try {
             Statement statement = connection.createStatement();
@@ -75,6 +76,7 @@ public class UserRepositorySql implements ICrud<String, User> {
         }
     }
 
+    @Override
     public User findByLogin(String login) {
         return readData(login, FIND_BY_LOGIN);
     }

@@ -1,4 +1,4 @@
-package com.bsdim.tlj.repository;
+package com.bsdim.tlj.repository.file;
 
 import java.io.*;
 import java.util.ArrayList;

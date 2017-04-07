@@ -1,7 +1,7 @@
 package com.bsdim.tlj.repository.users;
 
 import com.bsdim.tlj.domain.user.User;
-import com.bsdim.tlj.repository.FileRepository;
+import com.bsdim.tlj.repository.file.FileRepository;
 import com.bsdim.tlj.repository.ICrud;
 
 import java.util.List;

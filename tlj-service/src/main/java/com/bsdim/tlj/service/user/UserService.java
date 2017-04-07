@@ -1,12 +1,13 @@
 package com.bsdim.tlj.service.user;
 
 import com.bsdim.tlj.domain.user.User;
+import com.bsdim.tlj.repository.IUserRepository;
 import com.bsdim.tlj.repository.sql.UserRepositorySql;
 
 import java.util.List;
 
 public class UserService {
-    private UserRepositorySql repository = new UserRepositorySql();
+    private IUserRepository repository = new UserRepositorySql();
 
     public void addUser(User user){
         repository.create(user);
