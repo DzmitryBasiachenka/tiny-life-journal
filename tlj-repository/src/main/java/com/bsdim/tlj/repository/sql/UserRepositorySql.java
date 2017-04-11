@@ -1,6 +1,7 @@
 package com.bsdim.tlj.repository.sql;
 
 import com.bsdim.tlj.domain.user.User;
+import com.bsdim.tlj.repository.ConnectionManager;
 import com.bsdim.tlj.repository.IUserRepository;
 import com.bsdim.tlj.repository.exception.RepositoryException;
 
@@ -16,18 +17,8 @@ public class UserRepositorySql implements IUserRepository {
     private static final String GET_USERS = "select id, name, login, password from \"user\" order by id";
     private static final String FIND_BY_LOGIN = "select id, name, login, password from \"user\" where login = ?";
 
-    private static Connection connection;
-    private static String username = "postgres";
-    private static String password = "postgrespass";
-    private static String URL = "jdbc:postgresql://localhost:5432/tiny-life-journal";
-
-    public UserRepositorySql() {
-        try {
-            connection = DriverManager.getConnection(URL, username, password);
-        } catch (SQLException e) {
-            throw new RepositoryException(e);
-        }
-    }
+    public ConnectionManager instance = ConnectionManager.getInstance();
+    public Connection connection = instance.connection;
 
     @Override
     public void create(User user) {
@@ -81,7 +72,7 @@ public class UserRepositorySql implements IUserRepository {
         return readData(login, FIND_BY_LOGIN);
     }
 
-    private static void addValues(User user, String request) {
+    private void addValues(User user, String request) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setString(1, user.getName());

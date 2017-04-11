@@ -1,12 +1,13 @@
 package com.bsdim.tlj.service.article;
 
 import com.bsdim.tlj.domain.article.Article;
-import com.bsdim.tlj.repository.article.ArticleRepository;
+import com.bsdim.tlj.repository.IArticleRepository;
+import com.bsdim.tlj.repository.sql.ArticleRepositorySql;
 
 import java.util.List;
 
 public class ArticleService {
-    private ArticleRepository repository = new ArticleRepository();
+    private IArticleRepository repository = new ArticleRepositorySql();
 
     public void create(Article article) {
         repository.create(article);

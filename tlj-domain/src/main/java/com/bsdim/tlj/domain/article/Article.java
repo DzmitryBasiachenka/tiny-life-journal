@@ -73,6 +73,7 @@ public class Article implements Serializable{
     public String toString() {
         StringBuilder builder = new StringBuilder("id: ");
         builder.append(id);
+        builder.append("\n");
         builder.append("userId: ");
         builder.append(userId);
         builder.append("\n");
