@@ -1,7 +1,7 @@
 package com.bsdim.tlj.repository.sql;
 
 import com.bsdim.tlj.domain.user.User;
-import com.bsdim.tlj.repository.ConnectionManager;
+import com.bsdim.tlj.repository.connection.ConnectionManager;
 import com.bsdim.tlj.repository.IUserRepository;
 import com.bsdim.tlj.repository.exception.RepositoryException;
 
@@ -17,8 +17,7 @@ public class UserRepositorySql implements IUserRepository {
     private static final String GET_USERS = "select id, name, login, password from \"user\" order by id";
     private static final String FIND_BY_LOGIN = "select id, name, login, password from \"user\" where login = ?";
 
-    public ConnectionManager instance = ConnectionManager.getInstance();
-    public Connection connection = instance.connection;
+    private Connection connection = ConnectionManager.getInstance().getConnection();
 
     @Override
     public void create(User user) {

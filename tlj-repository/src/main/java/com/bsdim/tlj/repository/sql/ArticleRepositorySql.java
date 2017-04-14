@@ -1,7 +1,7 @@
 package com.bsdim.tlj.repository.sql;
 
 import com.bsdim.tlj.domain.article.Article;
-import com.bsdim.tlj.repository.ConnectionManager;
+import com.bsdim.tlj.repository.connection.ConnectionManager;
 import com.bsdim.tlj.repository.IArticleRepository;
 import com.bsdim.tlj.repository.exception.RepositoryException;
 
@@ -16,8 +16,7 @@ public class ArticleRepositorySql implements IArticleRepository {
     private static final String DELETE_ARTICLE = "delete from article where id = ?";
     private static final String FIND_BY_USERID = "select id, title, text, userId from article where userId = ?";
 
-    public ConnectionManager instance = ConnectionManager.getInstance();
-    public Connection connection = instance.connection;
+    private Connection connection = ConnectionManager.getInstance().getConnection();
 
     @Override
     public void create(Article article) {
