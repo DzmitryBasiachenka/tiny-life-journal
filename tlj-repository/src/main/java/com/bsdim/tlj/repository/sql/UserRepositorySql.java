@@ -89,14 +89,15 @@ public class UserRepositorySql implements IUserRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setString(1, data);
             ResultSet resultSet = preparedStatement.executeQuery();
-            User user = new User();
             while (resultSet.next()) {
+                User user = new User();
                 user.setId(resultSet.getString("id"));
                 user.setName(resultSet.getString("name"));
                 user.setLogin(resultSet.getString("login"));
                 user.setPassword(resultSet.getString("password"));
+                return user;
             }
-            return user;
+            return null;
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
