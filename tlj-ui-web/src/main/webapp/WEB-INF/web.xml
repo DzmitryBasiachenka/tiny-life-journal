@@ -6,10 +6,10 @@
          version="3.1">
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
-        <servlet-class>servlet.DispatcherServlet</servlet-class>
+        <servlet-class>com.bsdim.tlj.ui.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
-        <url-pattern>/DispatcherServlet</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>

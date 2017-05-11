@@ -1,4 +1,4 @@
-package servlet;
+package com.bsdim.tlj.ui.web.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
