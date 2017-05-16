@@ -5,13 +5,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class DispatcherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        out.print("<title>Title</title><p><b>My Servlet</b><br>Hello World!!!<br>Of course, Hello!!</p>");
-        out.close();
+        String requestURI = req.getRequestURI();
+        String contextPath = req.getContextPath();
+        String jspName = "joy.jsp";
+        if(requestURI.equals(contextPath + "/hello")){
+            jspName = "hello.jsp";
+        }
+        req.getRequestDispatcher("/WEB-INF/view/" + jspName).forward(req, resp);
     }
 }
