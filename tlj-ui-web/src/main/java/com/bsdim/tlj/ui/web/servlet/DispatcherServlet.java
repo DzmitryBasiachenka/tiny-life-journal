@@ -11,10 +11,16 @@ public class DispatcherServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestURI = req.getRequestURI();
         String contextPath = req.getContextPath();
-        String jspName = "joy.jsp";
-        if(requestURI.equals(contextPath + "/hello")){
-            jspName = "hello.jsp";
+        String jspName = "main.jsp";
+
+        if(requestURI.startsWith(contextPath + "/news")){
+            jspName = "news.jsp";
+        } else if (requestURI.startsWith(contextPath + "/communication")) {
+            jspName = "communication.jsp";
+        } else if (requestURI.startsWith(contextPath + "/info")) {
+            jspName = "info.jsp";
         }
+
         req.getRequestDispatcher("/WEB-INF/view/" + jspName).forward(req, resp);
     }
 }
