@@ -10,7 +10,6 @@ pageEncoding="utf-8"%>
 </head>
 <body>
 <jsp:include page="/WEB-INF/tiles/menu.jsp" />
-<jsp:include page="/WEB-INF/tiles/pictures.jsp" />
 <p class="menu">Info</p>
 </body>
 </html>

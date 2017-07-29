@@ -1,6 +1,8 @@
 <%@ page language="java"
 contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
+<%@ page import="com.bsdim.tlj.ui.web.servlet.InfoBlock"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@ pageEncoding="utf-8"%>
 </head>
 <body>
 <jsp:include page="/WEB-INF/tiles/menu.jsp" />
-<jsp:include page="/WEB-INF/tiles/pictures.jsp" />
+<jsp:include page="/WEB-INF/tiles/pictures-list.jsp" />
 <p class="menu">Communication</p>
 </body>
 </html>
