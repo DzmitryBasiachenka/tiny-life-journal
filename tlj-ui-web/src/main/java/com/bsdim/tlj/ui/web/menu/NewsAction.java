@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class NewsAction implements Action {
-    private String jspName = "news.jsp";
+    private static final String NEWS_JSP_NAME = "news.jsp";
 
     @Override
     public String perform(HttpServletRequest req, HttpServletResponse resp) {
-        return jspName;
+        return NEWS_JSP_NAME;
     }
 }

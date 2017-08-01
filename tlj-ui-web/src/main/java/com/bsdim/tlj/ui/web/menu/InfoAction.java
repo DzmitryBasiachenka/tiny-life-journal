@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class InfoAction implements Action {
-    private String jspName = "info.jsp";
+    private static final String INFO_JSP_NAME = "info.jsp";
 
     @Override
     public String perform(HttpServletRequest req, HttpServletResponse resp) {
         req.setAttribute("blocks", new CommunicationAction().addImageInfo());
-        return jspName;
+        return INFO_JSP_NAME;
     }
 }

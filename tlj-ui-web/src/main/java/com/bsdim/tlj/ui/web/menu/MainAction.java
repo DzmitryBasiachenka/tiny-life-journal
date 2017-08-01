@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MainAction implements Action {
-    private String jspName = "main.jsp";
+    private static final String MAIN_JSP_NAME = "main.jsp";
 
     @Override
     public String perform(HttpServletRequest req, HttpServletResponse resp) {
-        return jspName;
+        return MAIN_JSP_NAME;
     }
 }

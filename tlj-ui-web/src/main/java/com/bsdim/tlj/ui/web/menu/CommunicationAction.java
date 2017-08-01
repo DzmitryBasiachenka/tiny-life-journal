@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommunicationAction implements Action {
-    private String jspName = "communication.jsp";
+    private static final String COMMUNICATION_JSP_NAME = "communication.jsp";
 
     @Override
     public String perform(HttpServletRequest req, HttpServletResponse resp) {
         req.setAttribute("blocks", addImageInfo());
-        return jspName;
+        return COMMUNICATION_JSP_NAME;
     }
 
     public List<InfoBlock> addImageInfo() {
