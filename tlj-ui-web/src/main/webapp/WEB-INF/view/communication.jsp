@@ -1,8 +1,6 @@
 <%@ page language="java"
 contentType="text/html; charset=utf-8"
 pageEncoding="utf-8"%>
-<%@ page import="com.bsdim.tlj.ui.web.servlet.InfoBlock"%>
-<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

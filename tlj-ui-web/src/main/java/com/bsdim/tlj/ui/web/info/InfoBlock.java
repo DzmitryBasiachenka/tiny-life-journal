@@ -1,8 +1,5 @@
-package com.bsdim.tlj.ui.web.servlet;
+package com.bsdim.tlj.ui.web.info;
 
-/**
- * Created by SONY on 26.07.2017.
- */
 public class InfoBlock {
     private String imageUrl;
     private String title;
