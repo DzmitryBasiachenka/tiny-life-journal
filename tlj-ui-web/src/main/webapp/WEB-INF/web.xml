@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <filter>
+        <filter-name>FilterSecurity</filter-name>
+        <filter-class>com.bsdim.tlj.ui.web.servlet.FilterSecurity</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterSecurity</filter-name>
+        <servlet-name>DispatcherServlet</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>com.bsdim.tlj.ui.web.servlet.DispatcherServlet</servlet-class>

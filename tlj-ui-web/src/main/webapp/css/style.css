@@ -41,3 +41,22 @@
     margin: 0px;
     text-align: center;
 }
+
+.authorization-window {
+    color: #000000;
+    background-color: #DCDCDC;
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border: 2px solid #191970;
+    border-radius: 10px;
+}
+
+.authorization-window p, h3 {
+    text-indent: 20px;
+}
