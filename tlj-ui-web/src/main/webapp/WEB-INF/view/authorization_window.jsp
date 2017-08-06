@@ -12,7 +12,7 @@ pageEncoding="utf-8"%>
 <div class="authorization-window">
 <h3 align="center">Authorization</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login:<input type="text" maxlength="50" size="30"></p>
-<p>Password:<input type="text" maxlength="50" size="30"></p>
+<p>Password:<input type="password" maxlength="50" size="30"></p>
 <p align="center"><input type="submit" value="Sign in">
 <input type="submit" value="Sign up"></p>
 </div>
