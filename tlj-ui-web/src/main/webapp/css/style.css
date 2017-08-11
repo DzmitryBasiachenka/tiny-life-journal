@@ -42,7 +42,7 @@
     text-align: center;
 }
 
-.authorization-window {
+.login_page {
     color: #000000;
     background-color: #DCDCDC;
     width: 400px;
@@ -57,6 +57,6 @@
     border-radius: 10px;
 }
 
-.authorization-window p, h3 {
+.login_page p, h3 {
     text-indent: 20px;
 }
