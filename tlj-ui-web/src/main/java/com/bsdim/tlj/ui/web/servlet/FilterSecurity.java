@@ -4,14 +4,24 @@ import java.io.*;
 import javax.servlet.*;
 
 public class FilterSecurity implements Filter {
-
-    public void init (FilterConfig config) throws ServletException {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
     }
 
-    public void doFilter (ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
-            req.getRequestDispatcher("/WEB-INF/view/authorization_window.jsp").forward(req, resp);
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+
+        if((login != null) && (password != null)) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        request.getRequestDispatcher("/WEB-INF/view/login_page.jsp").forward(request, response);
     }
 
+    @Override
     public void destroy() {
     }
 }
