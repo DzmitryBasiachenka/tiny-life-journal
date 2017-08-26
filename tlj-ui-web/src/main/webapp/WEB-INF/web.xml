@@ -6,7 +6,7 @@
          version="3.1">
     <filter>
         <filter-name>FilterSecurity</filter-name>
-        <filter-class>com.bsdim.tlj.ui.web.servlet.FilterSecurity</filter-class>
+        <filter-class>com.bsdim.tlj.ui.web.filter.FilterSecurity</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FilterSecurity</filter-name>
