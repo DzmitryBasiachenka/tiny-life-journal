@@ -14,6 +14,8 @@ public class FilterSecurity implements Filter {
     private static final String PASSWORD = "password";
     private static final String USER_SESSION = "userSession";
     private static final String LOGIN_PAGE = "/WEB-INF/view/login_page.jsp";
+    private static final String WRONG_USER = "Wrong login or password. Please, input correct data.";
+    private static final String WRONG_USER_MESSAGE = "wrongUserMessage";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -39,6 +41,7 @@ public class FilterSecurity implements Filter {
                 UserSession userSession = fillSession(session, user);
                 session.setAttribute(USER_SESSION, userSession);
             } else {
+                request.setAttribute(WRONG_USER_MESSAGE, WRONG_USER);
                 forwardLoginForm(request, response);
                 return;
             }
