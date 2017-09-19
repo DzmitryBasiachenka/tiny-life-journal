@@ -1,4 +1,11 @@
-# tiny-life-journal
+Create SQL database:
+>>> gradlew update -PrunList=createBase
 
+Init SQL database:
+>>> gradlew update
 
-Change number one: git rm Readme.txt
+Set rollback tag:
+>>> gradlew tag -PliquibaseCommandValue=<tagName>
+
+Rollback:
+>>> gradlew rollback -PliquibaseCommandValue=<tagName>
