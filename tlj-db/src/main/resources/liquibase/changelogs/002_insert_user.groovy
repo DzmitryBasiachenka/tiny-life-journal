@@ -12,7 +12,7 @@ databaseChangeLog {
             column(name: 'id', value: 'adminId')
             column(name: 'title', value: 'title')
             column(name: 'text', value: 'text')
-            column(name: 'userId', value: '11123005va')
+            column(name: 'user_id', value: '11123005va')
         }
 
         rollback {

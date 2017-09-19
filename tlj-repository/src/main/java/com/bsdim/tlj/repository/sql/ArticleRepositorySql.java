@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleRepositorySql implements IArticleRepository {
-    private static final String CREATE_ARTICLE = "insert into article(title, text, userId, id) values(?, ?, ?, ?)";
-    private static final String READ_ARTICLE = "select id, title, text, userId from article where id = ?";
+    private static final String CREATE_ARTICLE = "insert into article(title, text, user_id, id) values(?, ?, ?, ?)";
+    private static final String READ_ARTICLE = "select id, title, text, user_id from article where id = ?";
     private static final String UPDATE_ARTICLE = "update article set title = ?, text = ? where id = ?";
     private static final String DELETE_ARTICLE = "delete from article where id = ?";
-    private static final String FIND_BY_USERID = "select id, title, text, userId from article where userId = ?";
+    private static final String FIND_BY_USERID = "select id, title, text, user_id from article where user_id = ?";
 
     private Connection connection = ConnectionManager.getInstance().getConnection();
 
@@ -34,7 +34,7 @@ public class ArticleRepositorySql implements IArticleRepository {
                 article.setId(resultSet.getString("id"));
                 article.setTitle(resultSet.getString("title"));
                 article.setText(resultSet.getString("text"));
-                article.setUserId(resultSet.getString("userId"));
+                article.setUserId(resultSet.getString("user_id"));
             }
             return article;
         } catch (SQLException e) {
@@ -78,7 +78,7 @@ public class ArticleRepositorySql implements IArticleRepository {
                 article.setId(resultSet.getString("id"));
                 article.setTitle(resultSet.getString("title"));
                 article.setText(resultSet.getString("text"));
-                article.setUserId(resultSet.getString("userId"));
+                article.setUserId(resultSet.getString("user_id"));
                 listArticles.add(article);
             }
             return listArticles;
