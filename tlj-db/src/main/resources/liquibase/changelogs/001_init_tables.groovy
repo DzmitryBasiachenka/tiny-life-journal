@@ -35,7 +35,7 @@ databaseChangeLog {
             column(name: 'text', type: 'VARCHAR') {
                 constraints(nullable: false)
             }
-            column(name: 'userId', type: 'VARCHAR(128)') {
+            column(name: 'user_id', type: 'VARCHAR(128)') {
                 constraints(nullable: false)
             }
         }
@@ -48,8 +48,8 @@ databaseChangeLog {
  changeSet(id: '00003', author: 'dzmitry') {
      addPrimaryKey(tableName: 'article', columnNames: 'id', constraintName: 'pk_article')
 
-     addForeignKeyConstraint(constraintName: 'fk_article_userId',
-                baseTableName: 'article', baseColumnNames: 'userId',
+     addForeignKeyConstraint(constraintName: 'fk_article_user_id',
+                baseTableName: 'article', baseColumnNames: 'user_id',
                 referencedTableName: 'user', referencedColumnNames: 'id')
  }
 }
