@@ -89,3 +89,9 @@
     margin: auto;
     background-image: url(../pictures/bg-login-form.jpg);
 }
+
+.clip {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

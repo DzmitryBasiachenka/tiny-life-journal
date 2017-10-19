@@ -12,9 +12,9 @@ pageEncoding="utf-8"%>
         <li class="nav-item"><a class="nav-link"  href="/tlj-ui-web/communication">Контакты</a></li>
         <li class="nav-item"><a class="nav-link"  href="/tlj-ui-web/info">О сайте</a></li>
       </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
-    </form>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Поиск" aria-label="Search">
+      <button class="btn btn-outline-secondary" type="submit">Найти</button>
+    </form> -->
   </div>
 </nav>
