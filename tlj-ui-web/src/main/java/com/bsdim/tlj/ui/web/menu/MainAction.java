@@ -3,6 +3,7 @@ package com.bsdim.tlj.ui.web.menu;
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.repository.IArticleRepository;
 import com.bsdim.tlj.repository.sql.ArticleRepositorySql;
+import com.bsdim.tlj.service.article.ArticleService;
 import com.bsdim.tlj.ui.web.servlet.Action;
 import com.bsdim.tlj.ui.web.session.UserSession;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class MainAction implements Action {
     private static final String MAIN_JSP_NAME = "main.jsp";
-    private IArticleRepository repository = new ArticleRepositorySql();
+    private ArticleService service = new ArticleService();
 
     @Override
     public String perform(HttpServletRequest req, HttpServletResponse resp) {
@@ -26,6 +27,6 @@ public class MainAction implements Action {
         HttpSession session = req.getSession();
         UserSession user = (UserSession)session.getAttribute("userSession");
 
-        return  repository.findByUserId(user.getId());
+        return  service.findByUserId(user.getId());
     }
 }
