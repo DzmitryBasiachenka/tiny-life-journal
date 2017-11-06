@@ -5,9 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css" type="text/css"/>
+  <link rel="stylesheet" href="<c:url value='/css/style.css'/>" type="text/css"/>
   <title>${title}</title>
 </head>
 <body>
-<div class="container-fluid">
-<jsp:include page="/WEB-INF/tiles/menu.jsp" />
+  <jsp:include page="/WEB-INF/tiles/add-article.jsp" />
+  <div class="container-fluid">
+  <jsp:include page="/WEB-INF/tiles/menu.jsp" />

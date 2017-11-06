@@ -29,7 +29,7 @@ public class FilterSecurity implements Filter {
             String login = request.getParameter(LOGIN);
             String password = request.getParameter(PASSWORD);
 
-            if((login == null) || (password == null)) {
+            if ((login == null) || (password == null)) {
                 forwardLoginForm(request, response);
                 return;
             }
@@ -38,7 +38,7 @@ public class FilterSecurity implements Filter {
             User user = service.findByLogin(login);
 
             if ((user != null) && (user.getPassword().equals(password))) {
-                UserSession userSession = fillSession(session, user);
+                UserSession userSession = createUserSession(user);
                 session.setAttribute(USER_SESSION, userSession);
             } else {
                 request.setAttribute(WRONG_USER_MESSAGE, WRONG_USER);
@@ -49,7 +49,7 @@ public class FilterSecurity implements Filter {
         chain.doFilter(request, response);
     }
 
-    private UserSession fillSession(HttpSession session, User user) {
+    private UserSession createUserSession(User user) {
         UserSession userSession = new UserSession();
         userSession.setId(user.getId());
         userSession.setLogin(user.getLogin());

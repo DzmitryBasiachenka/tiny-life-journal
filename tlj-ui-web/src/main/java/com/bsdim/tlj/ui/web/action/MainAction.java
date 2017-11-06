@@ -1,8 +1,6 @@
-package com.bsdim.tlj.ui.web.menu;
+package com.bsdim.tlj.ui.web.action;
 
 import com.bsdim.tlj.domain.article.Article;
-import com.bsdim.tlj.repository.IArticleRepository;
-import com.bsdim.tlj.repository.sql.ArticleRepositorySql;
 import com.bsdim.tlj.service.article.ArticleService;
 import com.bsdim.tlj.ui.web.servlet.Action;
 import com.bsdim.tlj.ui.web.session.UserSession;
@@ -14,19 +12,20 @@ import java.util.List;
 
 public class MainAction implements Action {
     private static final String MAIN_JSP_NAME = "main.jsp";
+    private static final String USER_SESSION = "userSession";
+    private static final String ARTICLES = "articles";
+
     private ArticleService service = new ArticleService();
 
     @Override
     public String perform(HttpServletRequest req, HttpServletResponse resp) {
-        req.setAttribute("articles", getListArticle(req));
-
+        req.setAttribute(ARTICLES, getListArticle(req));
         return MAIN_JSP_NAME;
     }
 
     private List<Article> getListArticle(HttpServletRequest req) {
         HttpSession session = req.getSession();
-        UserSession user = (UserSession)session.getAttribute("userSession");
-
+        UserSession user = (UserSession) session.getAttribute(USER_SESSION);
         return  service.findByUserId(user.getId());
     }
 }

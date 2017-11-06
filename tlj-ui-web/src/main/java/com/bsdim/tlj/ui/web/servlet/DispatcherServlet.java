@@ -1,7 +1,6 @@
 package com.bsdim.tlj.ui.web.servlet;
 
-import com.bsdim.tlj.domain.article.Article;
-import com.bsdim.tlj.ui.web.menu.*;
+import com.bsdim.tlj.ui.web.action.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DispatcherServlet extends HttpServlet {
@@ -46,7 +44,8 @@ public class DispatcherServlet extends HttpServlet {
 
     private void initMapPost() {
         mapPost = new HashMap<>();
-        mapPost.put("/processingForm", mapGet.get("/"));
+        mapPost.put("/login", mapGet.get("/"));
+        mapPost.put("/article/add", new SaveArticleAction());
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp, Map<String, Action> map) throws ServletException, IOException {
@@ -54,7 +53,7 @@ public class DispatcherServlet extends HttpServlet {
         Action action = findAction(servletPath, map);
         String jspName = ERROR_404;
 
-        if(action != null) {
+        if (action != null) {
             jspName = action.perform(req, resp);
         }
 
@@ -62,9 +61,9 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     private Action findAction(String servletPath, Map<String, Action> map) {
-        while(!servletPath.isEmpty()) {
+        while (!servletPath.isEmpty()) {
             Action action = map.get(servletPath);
-            if(action == null) {
+            if (action == null) {
                 int index = servletPath.lastIndexOf(SLASH, servletPath.length());
                 servletPath = servletPath.substring(0, index);
             } else {

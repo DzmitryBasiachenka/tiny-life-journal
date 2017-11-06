@@ -1,4 +1,4 @@
-package com.bsdim.tlj.ui.web.menu;
+package com.bsdim.tlj.ui.web.action;
 
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.service.article.ArticleService;
