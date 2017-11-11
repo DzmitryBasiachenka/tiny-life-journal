@@ -1,4 +1,4 @@
-package com.bsdim.tlj.ui.web.menu;
+package com.bsdim.tlj.ui.web.action;
 
 import com.bsdim.tlj.ui.web.info.InfoBlock;
 import com.bsdim.tlj.ui.web.servlet.Action;
