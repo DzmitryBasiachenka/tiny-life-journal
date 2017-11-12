@@ -2,7 +2,7 @@ apply plugin: 'war'
 apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
 gretty {
-  jvmArgs = ["-Dmy.property=C:/IdeaProjects/tiny-life-journal/config.properties"]
+  jvmArgs = ["-Dmy.property=$rootDir/config/config.properties"]
 }
 
 dependencies {
