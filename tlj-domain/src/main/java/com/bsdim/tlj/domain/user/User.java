@@ -2,6 +2,13 @@ package com.bsdim.tlj.domain.user;
 
 import java.io.Serializable;
 
+/**
+ * The user.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class User implements Serializable {
     private String id;
     private String name;
@@ -40,15 +47,20 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    /**
+     * Converts user to string.
+     *
+     * @return the data of user.
+     */
     public String toString() {
-        StringBuilder builder = new StringBuilder("id: ");
-        builder.append(id);
-        builder.append(" name: ");
-        builder.append(name);
-        builder.append(" login: ");
-        builder.append(login);
-        builder.append(" password: ");
-        builder.append(password);
-        return builder.toString();
+        return new StringBuilder("id: ")
+                .append(id)
+                .append(" name: ")
+                .append(name)
+                .append(" login: ")
+                .append(login)
+                .append(" password: ")
+                .append(password)
+                .toString();
     }
 }

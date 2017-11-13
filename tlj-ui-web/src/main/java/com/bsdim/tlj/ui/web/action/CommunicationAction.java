@@ -1,13 +1,20 @@
 package com.bsdim.tlj.ui.web.action;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.bsdim.tlj.ui.web.info.InfoBlock;
 import com.bsdim.tlj.ui.web.servlet.Action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * The communication action.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class CommunicationAction implements Action {
     private static final String COMMUNICATION_JSP_NAME = "communication.jsp";
 
@@ -17,6 +24,11 @@ public class CommunicationAction implements Action {
         return COMMUNICATION_JSP_NAME;
     }
 
+    /**
+     * Adds image info.
+     *
+     * @return the list of info blocks.
+     */
     public List<InfoBlock> addImageInfo() {
         List<InfoBlock> list = new ArrayList<>();
 

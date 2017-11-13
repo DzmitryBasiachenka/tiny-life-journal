@@ -1,5 +1,12 @@
 package com.bsdim.tlj.ui.web.session;
 
+/**
+ * The user session.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class UserSession {
     private String id;
     private String login;

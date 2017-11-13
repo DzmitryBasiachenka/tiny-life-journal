@@ -1,11 +1,25 @@
 package com.bsdim.tlj.app;
 
+import javax.swing.JFrame;
+
 import com.bsdim.tlj.app.window.LoginWindow;
 
-import javax.swing.*;
+/**
+ * The application starter.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
+public final class AppStarter {
+    private AppStarter() {}
 
-public class AppStarter {
-    public static void main(String[] args){
+    /**
+     * It is a point of input to the application.
+     *
+     * @param args the string array.
+     */
+    public static void main(String[] args) {
         JFrame loginWindow = new LoginWindow();
     }
 }
