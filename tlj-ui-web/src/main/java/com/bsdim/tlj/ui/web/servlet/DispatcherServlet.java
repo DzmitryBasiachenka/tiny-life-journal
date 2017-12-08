@@ -1,15 +1,28 @@
 package com.bsdim.tlj.ui.web.servlet;
 
-import com.bsdim.tlj.ui.web.action.*;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
+import com.bsdim.tlj.ui.web.action.ArticleAction;
+import com.bsdim.tlj.ui.web.action.CommunicationAction;
+import com.bsdim.tlj.ui.web.action.InfoAction;
+import com.bsdim.tlj.ui.web.action.MainAction;
+import com.bsdim.tlj.ui.web.action.NewsAction;
+import com.bsdim.tlj.ui.web.action.SaveArticleAction;
+
+/**
+ * The dispatcher servlet.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class DispatcherServlet extends HttpServlet {
     private static final String ERROR_404 = "404.jsp";
     private static final char SLASH = '/';
@@ -48,7 +61,8 @@ public class DispatcherServlet extends HttpServlet {
         mapPost.put("/article/add", new SaveArticleAction());
     }
 
-    private void process(HttpServletRequest req, HttpServletResponse resp, Map<String, Action> map) throws ServletException, IOException {
+    private void process(HttpServletRequest req, HttpServletResponse resp, Map<String, Action> map)
+            throws ServletException, IOException {
         String servletPath = req.getServletPath();
         Action action = findAction(servletPath, map);
         String jspName = ERROR_404;

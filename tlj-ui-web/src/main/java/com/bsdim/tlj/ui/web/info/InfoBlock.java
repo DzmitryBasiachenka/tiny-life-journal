@@ -1,5 +1,12 @@
 package com.bsdim.tlj.ui.web.info;
 
+/**
+ * The info block.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class InfoBlock {
     private String imageUrl;
     private String title;

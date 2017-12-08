@@ -1,14 +1,26 @@
 package com.bsdim.tlj.ui.web.filter;
 
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.bsdim.tlj.domain.user.User;
 import com.bsdim.tlj.service.user.UserService;
 import com.bsdim.tlj.ui.web.session.UserSession;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+/**
+ * The filter security.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class FilterSecurity implements Filter {
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
@@ -16,16 +28,19 @@ public class FilterSecurity implements Filter {
     private static final String LOGIN_PAGE = "/WEB-INF/view/login_page.jsp";
     private static final String WRONG_USER = "Wrong login or password. Please, input correct data.";
     private static final String WRONG_USER_MESSAGE = "wrongUserMessage";
+    private UserService service = new UserService();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
+    @SuppressWarnings("checkstyle:ReturnCount")
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpSession session = ((HttpServletRequest)request).getSession(true);
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpSession session = ((HttpServletRequest) request).getSession(true);
 
-        if (session.getAttribute(USER_SESSION) == null ) {
+        if (session.getAttribute(USER_SESSION) == null) {
             String login = request.getParameter(LOGIN);
             String password = request.getParameter(PASSWORD);
 
@@ -33,8 +48,6 @@ public class FilterSecurity implements Filter {
                 forwardLoginForm(request, response);
                 return;
             }
-
-            UserService service = new UserService();
             User user = service.findByLogin(login);
 
             if ((user != null) && (user.getPassword().equals(password))) {
@@ -57,7 +70,8 @@ public class FilterSecurity implements Filter {
         return userSession;
     }
 
-    private void forwardLoginForm(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+    private void forwardLoginForm(ServletRequest request, ServletResponse response)
+            throws ServletException, IOException {
         request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
     }
 

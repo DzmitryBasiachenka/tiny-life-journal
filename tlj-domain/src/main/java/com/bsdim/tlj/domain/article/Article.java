@@ -1,11 +1,21 @@
 package com.bsdim.tlj.domain.article;
 
+import java.io.Serializable;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import java.io.Serializable;
-
-public class Article implements Serializable{
+/**
+ * The article.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
+public class Article implements Serializable {
+    private static final int INITIAL_NON_ZERO_ODD_NUMBER = 17;
+    private static final int MULTIPLIER_NON_ZERO_ODD_NUMBER = 47;
+    private static final String LINE_FEED = "\n";
     private String id;
     private String title;
     private String text;
@@ -45,10 +55,10 @@ public class Article implements Serializable{
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == this) {
+        if (obj == this) {
             return true;
         }
-        if(obj == null || obj.getClass() != this.getClass()) {
+        if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
         Article article = (Article) obj;
@@ -62,24 +72,29 @@ public class Article implements Serializable{
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 47).
-                append(id).
-                append(title).
-                append(text).
-                append(userId).
-                toHashCode();
+        return new HashCodeBuilder(INITIAL_NON_ZERO_ODD_NUMBER, MULTIPLIER_NON_ZERO_ODD_NUMBER)
+                .append(id)
+                .append(title)
+                .append(text)
+                .append(userId)
+                .toHashCode();
     }
 
+    /**
+     * Converts article to string.
+     *
+     * @return the data of article.
+     */
     public String toString() {
-        StringBuilder builder = new StringBuilder("id: ");
-        builder.append(id);
-        builder.append("\n");
-        builder.append("userId: ");
-        builder.append(userId);
-        builder.append("\n");
-        builder.append(title);
-        builder.append("\n");
-        builder.append(text);
-        return builder.toString();
+        return new StringBuilder("id: ")
+                .append(id)
+                .append(LINE_FEED)
+                .append("userId: ")
+                .append(userId)
+                .append(LINE_FEED)
+                .append(title)
+                .append(LINE_FEED)
+                .append(text)
+                .toString();
     }
 }

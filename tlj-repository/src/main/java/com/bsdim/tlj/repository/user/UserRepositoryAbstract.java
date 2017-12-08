@@ -1,13 +1,23 @@
-package com.bsdim.tlj.repository.users;
-
-import com.bsdim.tlj.domain.user.User;
-import com.bsdim.tlj.repository.file.FileRepository;
-import com.bsdim.tlj.repository.ICrud;
+package com.bsdim.tlj.repository.user;
 
 import java.util.List;
 
-public class UserRepository extends FileRepository<User> implements ICrud<String, User> {
-    public UserRepository() {
+import com.bsdim.tlj.domain.user.User;
+import com.bsdim.tlj.repository.ICrud;
+import com.bsdim.tlj.repository.file.AbstractFileRepository;
+
+/**
+ * The user repository abstract.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
+public class UserRepositoryAbstract extends AbstractFileRepository<User> implements ICrud<String, User> {
+    /**
+     * The constructor.
+     */
+    public UserRepositoryAbstract() {
         super("users.dat");
     }
 
@@ -55,6 +65,12 @@ public class UserRepository extends FileRepository<User> implements ICrud<String
         writeData(data);
     }
 
+    /**
+     * Finds user by login.
+     *
+     * @param login the login.
+     * @return the user.
+     */
     public User findByLogin(String login) {
         List<User> data = readData();
         for (User user: data) {

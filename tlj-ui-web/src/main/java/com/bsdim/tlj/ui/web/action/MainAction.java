@@ -1,15 +1,22 @@
 package com.bsdim.tlj.ui.web.action;
 
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.service.article.ArticleService;
 import com.bsdim.tlj.ui.web.servlet.Action;
 import com.bsdim.tlj.ui.web.session.UserSession;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.List;
-
+/**
+ * The main action.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class MainAction implements Action {
     private static final String MAIN_JSP_NAME = "main.jsp";
     private static final String USER_SESSION = "userSession";

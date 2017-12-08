@@ -1,12 +1,19 @@
 package com.bsdim.tlj.ui.web.action;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.bsdim.tlj.domain.article.Article;
 import com.bsdim.tlj.service.article.ArticleService;
 import com.bsdim.tlj.ui.web.servlet.Action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+/**
+ * The article action.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
 public class ArticleAction implements Action {
     private static final String ARTICLE_JSP_NAME = "article.jsp";
     private static final String ARTICLE = "article";

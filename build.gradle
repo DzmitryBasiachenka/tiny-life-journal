@@ -2,6 +2,13 @@ apply plugin: 'java'
 
 subprojects {
   apply plugin: 'java'
+  apply plugin: 'checkstyle'
+
+checkstyle {
+  ignoreFailures = true
+  toolVersion = 8.4
+  configFile = new File("$rootDir/config/checkstyle.xml")
+}
 
 repositories {
   jcenter()

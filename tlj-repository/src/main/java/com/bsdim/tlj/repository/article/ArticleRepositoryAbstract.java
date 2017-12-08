@@ -1,14 +1,25 @@
 package com.bsdim.tlj.repository.article;
 
-import com.bsdim.tlj.domain.article.Article;
-import com.bsdim.tlj.repository.file.FileRepository;
-import com.bsdim.tlj.repository.ICrud;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleRepository extends FileRepository<Article> implements ICrud<String, Article> {
-    public ArticleRepository() {
+import com.bsdim.tlj.domain.article.Article;
+import com.bsdim.tlj.repository.ICrud;
+import com.bsdim.tlj.repository.file.AbstractFileRepository;
+
+/**
+ * The article repository abstract.
+ * <p>
+ * Date: 2017-11-27
+ *
+ * @author Dzmitry Basiachenka
+ */
+public class ArticleRepositoryAbstract extends AbstractFileRepository<Article> implements ICrud<String, Article> {
+
+    /**
+     * The constructor.
+     */
+    public ArticleRepositoryAbstract() {
         super("articles.dat");
     }
 
@@ -56,6 +67,12 @@ public class ArticleRepository extends FileRepository<Article> implements ICrud<
         writeData(articles);
     }
 
+    /**
+     * Finds the list of articles by user id.
+     *
+     * @param userId the user id.
+     * @return the list of articles.
+     */
     public List<Article> findByUserId(String userId) {
         List<Article> articles = readData();
         List<Article> articlesUser = new ArrayList<>();
