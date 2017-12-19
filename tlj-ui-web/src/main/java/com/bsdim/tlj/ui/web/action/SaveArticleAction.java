@@ -36,7 +36,7 @@ public class SaveArticleAction implements Action {
     }
 
     private static void addArticle(String title, String text, HttpServletRequest req) {
-        if (WebUtil.compareParameters(title, text)) {
+        if (WebUtil.isNotBlank(title, text)) {
             HttpSession session = req.getSession();
             UserSession user = (UserSession) session.getAttribute(USER_SESSION);
 

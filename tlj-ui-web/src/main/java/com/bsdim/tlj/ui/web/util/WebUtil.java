@@ -13,12 +13,12 @@ public final class WebUtil {
     private WebUtil() {}
 
     /**
-     * Compares the parameters.
+     * Checks the blank of parameters.
      *
      * @param parameters the parameters.
      * @return true or false.
      */
-    public static boolean compareParameters(String... parameters) {
+    public static boolean isNotBlank(String... parameters) {
         for (String parameter : parameters) {
             if (StringUtils.isBlank(parameter)) {
                 return false;

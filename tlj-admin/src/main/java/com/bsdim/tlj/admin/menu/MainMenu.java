@@ -54,20 +54,30 @@ public class MainMenu {
                 case CASE_TWO:
                     sLogger.info(SEARCH_USER_BY_ID);
                     User user = service.findById(InputUtil.inputData(ENTER_ID));
-                    if (user == null) {
-                        sLogger.info(USER_NOT_FOUND);
-                    } else {
+                    if (user != null) {
                         sLogger.info(user.toString());
+                    } else {
+                        sLogger.info(USER_NOT_FOUND);
                     }
                     break;
                 case CASE_THREE:
                     sLogger.info(UPDATE_USER);
                     user = service.findById(InputUtil.inputData(ENTER_ID));
-                    service.updateUser(InputUtil.updateDataUser(user));
+                    if (user != null) {
+                        service.updateUser(InputUtil.updateDataUser(user));
+                    } else {
+                        sLogger.info(USER_NOT_FOUND);
+                    }
                     break;
                 case CASE_FOUR:
                     sLogger.info(DELETE_USER);
-                    service.deleteUser(InputUtil.inputData(ENTER_ID));
+                    String userId = InputUtil.inputData(ENTER_ID);
+                    user = service.findById(userId);
+                    if (user != null) {
+                        service.deleteUser(userId);
+                    } else {
+                        sLogger.info(USER_NOT_FOUND);
+                    }
                     break;
                 case CASE_FIVE:
                     sLogger.info(SHOW_USERS);
@@ -79,10 +89,10 @@ public class MainMenu {
                 case CASE_SIX:
                     sLogger.info(SEARCH_USER_BY_LOGIN);
                     user = service.findByLogin(InputUtil.inputData(ENTER_LOGIN));
-                    if (user == null) {
-                        sLogger.info(USER_NOT_FOUND);
-                    } else {
+                    if (user != null) {
                         sLogger.info(user.toString());
+                    } else {
+                        sLogger.info(USER_NOT_FOUND);
                     }
                     break;
                 case CASE_SEVEN:

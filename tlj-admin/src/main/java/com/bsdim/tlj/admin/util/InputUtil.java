@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 import com.bsdim.tlj.domain.user.User;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * The input of data.
@@ -28,8 +29,12 @@ public final class InputUtil {
      * @return inputed data.
      */
     public static String inputData(String message) {
-        sLogger.info(message);
-        return sScanner.nextLine();
+        String data;
+        do {
+            sLogger.info(message);
+            data = sScanner.nextLine();
+        } while (StringUtils.isBlank(data));
+        return data;
     }
 
     /**
@@ -40,10 +45,15 @@ public final class InputUtil {
     public static User createDataUser() {
         User user = new User();
 
-        user.setId(inputData("Enter your id: "));
-        user.setName(inputData("Enter your name: "));
-        user.setLogin(inputData("Enter your login: "));
-        user.setPassword(inputData("Enter your password: "));
+        String userId = inputData("Enter your id: ");
+        String name = inputData("Enter your name: ");
+        String login = inputData("Enter your login: ");
+        String password = inputData("Enter your password: ");
+
+        user.setId(userId);
+        user.setName(name);
+        user.setLogin(login);
+        user.setPassword(password);
 
         return user;
     }
@@ -55,9 +65,13 @@ public final class InputUtil {
      * @return the user which was updated.
      */
     public static User updateDataUser(User user) {
-        user.setName(inputData("Enter your name: "));
-        user.setLogin(inputData("Enter your login: "));
-        user.setPassword(inputData("Enter your password: "));
+        String name = inputData("Enter your name: ");
+        String login = inputData("Enter your login: ");
+        String password = inputData("Enter your password: ");
+
+        user.setName(name);
+        user.setLogin(login);
+        user.setPassword(password);
 
         return user;
     }
