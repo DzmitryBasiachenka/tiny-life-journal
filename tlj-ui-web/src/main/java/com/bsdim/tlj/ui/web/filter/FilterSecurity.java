@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.bsdim.tlj.domain.user.User;
 import com.bsdim.tlj.service.user.UserService;
 import com.bsdim.tlj.ui.web.session.UserSession;
+import com.bsdim.tlj.ui.web.util.WebUtil;
 
 /**
  * The filter security.
@@ -44,7 +45,7 @@ public class FilterSecurity implements Filter {
             String login = request.getParameter(LOGIN);
             String password = request.getParameter(PASSWORD);
 
-            if ((login == null) || (password == null)) {
+            if (!WebUtil.isNotBlank(login, password)) {
                 forwardLoginForm(request, response);
                 return;
             }
