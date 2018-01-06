@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bsdim.tlj.ui.web.action.ArticleAction;
+import com.bsdim.tlj.ui.web.action.ArticleFileAction;
 import com.bsdim.tlj.ui.web.action.CommunicationAction;
 import com.bsdim.tlj.ui.web.action.InfoAction;
 import com.bsdim.tlj.ui.web.action.MainAction;
@@ -23,6 +25,7 @@ import com.bsdim.tlj.ui.web.action.SaveArticleAction;
  *
  * @author Dzmitry Basiachenka
  */
+@MultipartConfig
 public class DispatcherServlet extends HttpServlet {
     private static final String ERROR_404 = "404.jsp";
     private static final char SLASH = '/';
@@ -59,6 +62,7 @@ public class DispatcherServlet extends HttpServlet {
         mapPost = new HashMap<>();
         mapPost.put("/login", mapGet.get("/"));
         mapPost.put("/article/add", new SaveArticleAction());
+        mapPost.put("/article/upload", new ArticleFileAction());
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp, Map<String, Action> map)

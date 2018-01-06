@@ -2,6 +2,7 @@ package com.bsdim.tlj.repository.connection;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,19 +19,23 @@ import com.bsdim.tlj.repository.exception.SystemException;
  * @author Dzmitry Basiachenka
  */
 public final class ConnectionManager {
+    private static final String DRIVER = "org.postgresql.Driver";
+    private static final String DB_URL = "db.url";
+    private static final String DB_USER_NAME = "db.user.name";
+    private static final String DB_PASSWORD = "db.password";
+    private static final String DB_CONFIG_PATH = "db.config.path";
+    private static final String DB_CONFIG_PROPERTIES = "/dbConfig.properties";
     private static ConnectionManager sInstance = new ConnectionManager();
 
-    private String file = System.getProperty("my.property");
     private Connection connection;
-    private Properties properties;
-    private FileInputStream fileInputStream;
 
     private ConnectionManager() {
         try {
-            loadProperties();
-            connection = DriverManager.getConnection(properties.getProperty("db.url"),
-                    properties.getProperty("db.user.name"), properties.getProperty("db.password"));
-        } catch (SQLException e) {
+            Properties properties = loadDbConfigProperties();
+            Class.forName(DRIVER);
+            connection = DriverManager.getConnection(properties.getProperty(DB_URL),
+                    properties.getProperty(DB_USER_NAME), properties.getProperty(DB_PASSWORD));
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RepositoryException(e);
         }
     }
@@ -38,18 +43,26 @@ public final class ConnectionManager {
         return connection;
     }
 
-    public String getFile() {
-        return file;
-    }
-
     public static ConnectionManager getInstance() {
         return sInstance;
     }
-    private void loadProperties() {
+    private Properties loadDbConfigProperties() {
         try {
-            properties = new Properties();
-            fileInputStream = new FileInputStream(file);
-            properties.load(fileInputStream);
+            Properties properties = new Properties();
+            properties.load(getDbConfig());
+            return properties;
+        } catch (IOException e) {
+            throw new SystemException(e);
+        }
+    }
+
+    private InputStream getDbConfig() {
+        try {
+            String configPropertiesPath = System.getProperty(DB_CONFIG_PATH);
+            if (configPropertiesPath != null) {
+                return new FileInputStream(configPropertiesPath);
+            }
+            return getClass().getResourceAsStream(DB_CONFIG_PROPERTIES);
         } catch (IOException e) {
             throw new SystemException(e);
         }
