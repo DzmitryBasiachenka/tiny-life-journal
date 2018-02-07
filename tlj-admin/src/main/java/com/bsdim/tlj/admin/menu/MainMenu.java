@@ -1,12 +1,13 @@
 package com.bsdim.tlj.admin.menu;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import com.bsdim.tlj.admin.AbstractMenu;
 import com.bsdim.tlj.admin.util.InputUtil;
 import com.bsdim.tlj.domain.user.User;
 import com.bsdim.tlj.service.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents main menu.
@@ -34,7 +35,7 @@ public class MainMenu {
     private static final String ENTER_LOGIN = "Enter your login: ";
     private static final String GOODBYE = "Goodbye";
     private static final String CHOOSE_AGAIN = "Choose again";
-    private static Logger sLogger = Logger.getLogger(MainMenu.class.getName());
+    private static Logger sLogger = LoggerFactory.getLogger(MainMenu.class);
     private UserService service = new UserService();
 
     /**

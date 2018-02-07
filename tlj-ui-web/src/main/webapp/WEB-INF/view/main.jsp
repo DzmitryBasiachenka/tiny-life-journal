@@ -21,7 +21,7 @@ pageEncoding="utf-8"%>
         <h3 class="card-header">Список статей:</h3>
         <c:forEach var="info" items="${articles}">
           <li class="list-group-item" data-toggle="tooltip" data-placement="right" title="${info.title}">
-          <p class="clip"><a class="text-dark alert-link" href="/tlj-ui-web/article/${info.id}">${info.title}</a></p></li>
+          <p class="clip"><a class="text-dark alert-link align-middle" href="/tlj-ui-web/article/${info.id}">${info.title}</a></p></li>
         </c:forEach>
       </ul>
     </div>
@@ -31,6 +31,14 @@ pageEncoding="utf-8"%>
           <h4>${emptyArticle}</h4>
         </div>
       </c:if>
+      <c:if test="${fileNotValid != null}">
+        <div class="modal-body border border-danger rounded text-center">
+          <h4>${fileNotValid}</h4>
+        </div>
+      </c:if>
+    </div>
+    <div class="col-md-8">
+
     </div>
   </div>
  </div>
