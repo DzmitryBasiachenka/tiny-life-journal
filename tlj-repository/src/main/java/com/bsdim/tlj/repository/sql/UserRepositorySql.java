@@ -32,7 +32,7 @@ public class UserRepositorySql implements IUserRepository {
     private static final int PARAMETER_INDEX_THREE = 3;
     private static final int PARAMETER_INDEX_FOUR = 4;
 
-    private Connection connection = ConnectionManager.getInstance().getConnection();
+    private ConnectionManager connectionManager = ConnectionManager.getInstance();
 
     @Override
     public void create(User user) {
@@ -51,17 +51,21 @@ public class UserRepositorySql implements IUserRepository {
 
     @Override
     public void delete(String id) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER);
             preparedStatement.setString(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
     @Override
     public List<User> getUsers() {
+        Connection connection = connectionManager.getConnection();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(GET_USERS);
@@ -78,6 +82,8 @@ public class UserRepositorySql implements IUserRepository {
             return listUsers;
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
@@ -87,6 +93,7 @@ public class UserRepositorySql implements IUserRepository {
     }
 
     private void addValues(User user, String request) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setString(PARAMETER_INDEX_ONE, user.getName());
@@ -96,10 +103,13 @@ public class UserRepositorySql implements IUserRepository {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
     private User readData(String data, String request) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setString(PARAMETER_INDEX_ONE, data);
@@ -115,6 +125,8 @@ public class UserRepositorySql implements IUserRepository {
             return null;
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 }

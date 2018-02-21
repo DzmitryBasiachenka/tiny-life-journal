@@ -26,7 +26,7 @@ public class DOMPars {
      * Parses the document.
      *
      * @param fileContent the fileContent.
-     * @return the article.
+     * @return the document.
      */
     public Document parse(InputStream fileContent) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

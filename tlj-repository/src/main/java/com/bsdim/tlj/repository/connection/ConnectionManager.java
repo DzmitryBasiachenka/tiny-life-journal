@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import com.bsdim.tlj.repository.exception.RepositoryException;
 import com.bsdim.tlj.repository.exception.SystemException;
@@ -25,32 +26,27 @@ public final class ConnectionManager {
     private static final String DB_PASSWORD = "db.password";
     private static final String DB_CONFIG_PATH = "db.config.path";
     private static final String DB_CONFIG_PROPERTIES = "/dbConfig.properties";
+    private static final int CAPACITY = 10;
+
     private static ConnectionManager sInstance = new ConnectionManager();
 
-    private Connection connection;
+    private Properties properties;
+    private ArrayBlockingQueue<Connection> usedConnectionsQueue = new ArrayBlockingQueue<>(CAPACITY);
+    private ArrayBlockingQueue<Connection> freeConnectionsQueue = new ArrayBlockingQueue<>(CAPACITY);
 
     private ConnectionManager() {
         try {
-            Properties properties = loadDbConfigProperties();
+            loadDbConfigProperties();
             Class.forName(DRIVER);
-            connection = DriverManager.getConnection(properties.getProperty(DB_URL),
-                    properties.getProperty(DB_USER_NAME), properties.getProperty(DB_PASSWORD));
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             throw new RepositoryException(e);
         }
     }
-    public Connection getConnection() {
-        return connection;
-    }
 
-    public static ConnectionManager getInstance() {
-        return sInstance;
-    }
-    private Properties loadDbConfigProperties() {
+    private void loadDbConfigProperties() {
         try {
-            Properties properties = new Properties();
+            properties = new Properties();
             properties.load(getDbConfig());
-            return properties;
         } catch (IOException e) {
             throw new SystemException(e);
         }
@@ -66,5 +62,47 @@ public final class ConnectionManager {
         } catch (IOException e) {
             throw new SystemException(e);
         }
+    }
+
+    /**
+     * Gets the connection.
+     *
+     * @return the connection.
+     */
+    public Connection getConnection() {
+        try {
+            Connection connection = usedConnectionsQueue.poll();
+            if (connection == null) {
+                if (freeConnectionsQueue.remainingCapacity() > usedConnectionsQueue.size()) {
+                    connection = DriverManager.getConnection(properties.getProperty(DB_URL),
+                            properties.getProperty(DB_USER_NAME), properties.getProperty(DB_PASSWORD));
+                } else {
+                    connection = usedConnectionsQueue.take();
+                }
+            }
+            freeConnectionsQueue.put(connection);
+            return connection;
+        } catch (InterruptedException | SQLException e) {
+            throw new RepositoryException(e);
+        }
+    }
+
+    /**
+     * Puts the connection.
+     *
+     * @param connection the connection.
+     */
+    public void putConnection(Connection connection) {
+        try {
+            usedConnectionsQueue.put(connection);
+            freeConnectionsQueue.remove(connection);
+        } catch (InterruptedException e) {
+            throw new RepositoryException(e);
+        }
+
+    }
+
+    public static ConnectionManager getInstance() {
+        return sInstance;
     }
 }
