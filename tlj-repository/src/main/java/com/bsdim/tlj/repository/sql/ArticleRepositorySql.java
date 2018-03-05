@@ -30,7 +30,7 @@ public class ArticleRepositorySql implements IArticleRepository {
     private static final int PARAMETER_INDEX_THREE = 3;
     private static final int PARAMETER_INDEX_FOUR = 4;
 
-    private Connection connection = ConnectionManager.getInstance().getConnection();
+    private ConnectionManager connectionManager = ConnectionManager.getInstance();
 
     @Override
     public void create(Article article) {
@@ -39,6 +39,7 @@ public class ArticleRepositorySql implements IArticleRepository {
 
     @Override
     public Article read(String id) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(READ_ARTICLE);
             preparedStatement.setString(PARAMETER_INDEX_ONE, id);
@@ -53,11 +54,14 @@ public class ArticleRepositorySql implements IArticleRepository {
             return article;
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
     @Override
     public void update(Article article) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ARTICLE);
             preparedStatement.setString(PARAMETER_INDEX_ONE, article.getTitle());
@@ -66,22 +70,28 @@ public class ArticleRepositorySql implements IArticleRepository {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
     @Override
     public void delete(String id) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ARTICLE);
             preparedStatement.setString(PARAMETER_INDEX_ONE, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
     @Override
     public List<Article> findByUserId(String userId) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_USERID);
             preparedStatement.setString(PARAMETER_INDEX_ONE, userId);
@@ -98,10 +108,13 @@ public class ArticleRepositorySql implements IArticleRepository {
             return listArticles;
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 
     private void addValues(Article article, String request) {
+        Connection connection = connectionManager.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(request);
             preparedStatement.setString(PARAMETER_INDEX_ONE, article.getTitle());
@@ -111,6 +124,8 @@ public class ArticleRepositorySql implements IArticleRepository {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RepositoryException(e);
+        } finally {
+            connectionManager.putConnection(connection);
         }
     }
 }
